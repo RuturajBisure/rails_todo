@@ -1,0 +1,8 @@
+%p
+  %strong Profile Picture
+  = @user.image
+%p
+  %strong User email
+  = @user.email
+
+= link_to "Edit", edit_user_registration_path

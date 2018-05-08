@@ -1,0 +1,92 @@
+.round-image-50 {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 51px;
+    width: 52px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+.devise-session-new{
+    text-align: center;
+    width: 500px; 
+    height: 342px;
+    margin: 0 auto;
+    background: #9fd4ef; 
+    color: #000;
+    border-radius: 25px;
+}
+
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    height: 209px;
+    /*padding: 20px;*/
+    margin-top: -45px;
+    border: 1px solid #888;
+    width: 20%;
+    float: right;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+#image-button{
+    height: 50px;
+    width: 62px;
+    float: right;
+}
+
+.field1{
+    margin-right: 300px;
+}
+.field2{
+    margin-right: 240px;
+}
+.field3{
+    margin-right: 100px;
+}
+
+.error{
+    color: red;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+}

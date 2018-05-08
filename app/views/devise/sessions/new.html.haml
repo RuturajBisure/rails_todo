@@ -1,0 +1,35 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Bootstrap Theme Company Page
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+  %body
+    %br/
+    .container
+      .row
+        %h2
+          .devise-session-new
+            %h1 Log in
+            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              .field
+                .field1
+                  = f.label :email
+                  %br/
+                = f.email_field :email, autofocus: true
+              .field
+                .field2
+                  = f.label :password
+                  %br/
+                = f.password_field :password, autocomplete: true
+              - if devise_mapping.rememberable?
+                .field3
+                  = f.check_box :remember_me
+                  = f.label :remember_me
+              .actions
+                = f.submit "Log in" , :class=>"btn btn-primary"
+                = link_to "Sign up", new_user_registration_path, :class =>"btn btn-success"

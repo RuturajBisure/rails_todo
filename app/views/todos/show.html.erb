@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+  <div class="row"><br>
+    <div class="container">
+      <div class="row"><br>
+          <p id="notice"><%= notice %></p>
+
+          <p>
+            <strong>Profile pic:</strong>
+            <%= image_tag(@todo.image.url(:thumb), :width => 60, :heigth => 60 ) %>
+          </p>
+
+          <p>
+            <strong>Description:</strong>
+            <%= @todo.description %>
+          </p>
+
+          <p>
+            <strong>Completion Date:</strong>
+            <%= @todo.completion_time %>
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            <%= @todo.status %>
+          </p>
+
+          <%= link_to 'Edit', edit_todo_path(@todo) , :class=>"btn btn-primary"%> |
+          <%= link_to 'Back', todos_path , :class=>"btn btn-success"%>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Bootstrap Theme Company Page
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+  %body
+    %br/
+    .container
+      .row
+        %p#notice= notice
+        %h1 Listing Todos
+        .btn-group
+          %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            Sort by
+            %span.caret
+          %ul.dropdown-menu{:role => "menu"}
+            %li
+              = link_to "Asc Order", todos_path(:type => "asc")
+            %li
+              = link_to "Desc Order", todos_path(:type => "desc")
+        .btn-group
+          %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            Filter By
+            %span.caret
+          %ul.dropdown-menu{:role => "menu1"}
+            %li
+              = link_to "Upcoming Todos", todos_path(:filter => "upcoming")
+            %li
+              = link_to "Completed Todos", todos_path(:filter => "completed")
+            %li
+              = link_to "All Todos", todos_path(:filter => "all")            
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th Image
+              %th Description
+              %th Completion Date
+              %th status
+              %th Actions
+          %tbody
+            - @todos.each do |todo|
+              %tr
+                %td= image_tag(todo.image.url(:thumb), :width => 60, :heigth => 60 )
+                %td= todo.description
+                %td= I18n.l(todo.completion_time, format: "%Y-%m-%d %H-%M")
+                %td= todo.status
+                %td.btn-group
+                  %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                    Change the status
+                    %span.caret
+                  %ul.dropdown-menu{:role => "menu"}
+                    %li
+                      - todo.aasm.events.each do |eve|
+                        = link_to "#{eve.name.to_s.titlecase}".html_safe,{:action=>"update", :controller=>"todos", :id => todo.id, :status => eve.name.to_s, :manual_approve => 'true'}, :method => "put", :data => { confirm: 'Are you sure, you want to change the status.'}
+                  = link_to todo_path(:id => todo.id), :method => "delete", :data => { confirm: 'Are you sure, you want to remove the todo.'}, :class => "btn btn-success"do
+                    Remove 
+
+
+        = link_to 'New Todo', new_todo_path, :class=>"btn btn-success"
+:javascript
+  $(".dropdown-menu li a").click(function(){
+    $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+    $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+  });
